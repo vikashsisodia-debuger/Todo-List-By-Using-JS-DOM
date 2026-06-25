@@ -1,0 +1,36 @@
+    <script>
+        // Now Scripting is Start-
+        const input = document.querySelector("#input");
+        const addBtn = document.querySelector("#addBtn");
+        const taskList = document.querySelector("#taskList");
+        addBtn.addEventListener("click",() => {
+            if(input.value.trim() === "") {return;}
+            const li = document.createElement("li");
+            const taskText = document.createElement("span");
+            taskText.innerText = input.value;
+            const buttonBox = document.createElement("div");
+            buttonBox.classList.add("taskButtons");
+            const doneBtn = document.createElement("button");
+            doneBtn.innerText = "Done";
+            doneBtn.classList.add("doneBtn");
+            const deleteBtn = document.createElement("button");
+            deleteBtn.innerText = "Delete";
+            deleteBtn.classList.add("deleteBtn");
+            // adding event Listner to done button
+            doneBtn.addEventListener("click",() => {
+                taskText.classList.toggle("completed");
+            })
+            // adding event Listener to delete button
+            deleteBtn.addEventListener("click",() => {
+                li.remove();
+            })
+            // div me Add karwa diya both Buttons ko.
+            buttonBox.appendChild(doneBtn);
+            buttonBox.appendChild(deleteBtn);
+            // Now li ke answer div of buttons and span ko put karo
+            li.appendChild(taskText);
+            li.appendChild(buttonBox);
+            taskList.appendChild(li);
+            input.value = "";
+        })
+    </script>
